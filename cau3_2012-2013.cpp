@@ -36,7 +36,7 @@ class Chuyendoi: public Stack
 		{
 			for (int i=0; i<n; ++i)
 			{
-				char *t=new char;
+				char *t=new char[100];
 			//	b[i]=new char;
 				int j=0;
 				int a1=a[i];
@@ -61,22 +61,18 @@ class Chuyendoi: public Stack
 						default:
 							t[j++]=p+48;  
 					}
-					cout<<t[j-1];
 					a1/=16;
 				}
 				
 				while(a1!=0);
-					cout<<endl<<t<<endl;
-				//	cout<<j<<endl;
-				
-				for (int k=0; k<(j-1)/2; k++ )
+				t[j]='\0';
+				for (int k=0; k<(j/2); k++ )
 				{
-					char temp=t[k];//cout<<temp<<endl;
-					t[k]=t[j-k];
-					t[j-k]=temp;
+					char temp=t[k];
+					t[k]=t[j-k-1]; 
+					t[j-k-1]=temp;
 				}	
-			
-				cout<<"a["<<i<<"] = "<<t<<endl;							
+				cout<<endl<<"a["<<i<<"] = "<<t<<endl;							
 			}
 		}
 };
@@ -84,7 +80,7 @@ class Chuyendoi: public Stack
 int main()
 {
 	Chuyendoi a;
-	a.push(29);
+	a.push(1023);
 	a.push(28);
 	a.chuyendoi1();
 	
